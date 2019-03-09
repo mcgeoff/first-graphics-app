@@ -10,6 +10,14 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="charts">
+  <div class="inline-chart" id="county-homicides"></div>
+  <div class="inline-chart" id="harvard-park-homicides"></div>
+</div>
+
+
+
 <h3>Killed in Harvard Park</h3>
 <p>The {{ site.data.harvard_park_homicides|length}} homicides in Harvard Park since 2000 were primarily black and Latino males, but the list includes husbands, wives, fathers, mothers of all ages, and even some small children.</p>
 <p>The first to lose their life, {{ site.data.harvard_park_homicides[site.data.harvard_park_homicides|length-1].first_name }} {{ site.data.harvard_park_homicides[site.data.harvard_park_homicides|length-1].last_name }}, was killed on {{ site.data.harvard_park_homicides[site.data.harvard_park_homicides|length-1].death_date }}</p>
@@ -26,4 +34,11 @@
     </div>
 {% endfor %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+var annualTotals = {% include  '_data/annual_totals.json' %}
+// most important is that data is included before the chart code
+</script>
 {% endblock %}

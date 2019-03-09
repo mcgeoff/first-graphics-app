@@ -21,6 +21,8 @@
             <img src="https://bl.ocks.org/palewire/raw/1035cd306a2f85b362b1a20ce315b8eb/ire-logo.png">
         </a>
     </nav>
+    <div class="row-fluid">
+    <div class="col-sm-12">
     <header>
         <h1>{% block headline %}{% endblock %}</h1>
         <div class="byline">
@@ -31,6 +33,8 @@
         </div>
     </header>
     {% block content %}{% endblock %}
+    </div>
+    </div>
     {% block scripts %}{% endblock %}
     <script src="scripts/main.js"></script>
 </body>
