@@ -10,7 +10,20 @@
 {% endblock %}
 
 {% block content %}
+<h3>Killed in Harvard Park</h3>
+<p>The {{ site.data.harvard_park_homicides|length}} homicides in Harvard Park since 2000 were primarily black and Latino males, but the list includes husbands, wives, fathers, mothers of all ages, and even some small children.</p>
+<p>The first to lose their life, {{ site.data.harvard_park_homicides[site.data.harvard_park_homicides|length-1].first_name }} {{ site.data.harvard_park_homicides[site.data.harvard_park_homicides|length-1].last_name }}, was killed on {{ site.data.harvard_park_homicides[site.data.harvard_park_homicides|length-1].death_date }}</p>
+<p>The latest, {{ site.data.harvard_park_homicides[0].first_name }} {{ site.data.harvard_park_homicides[0].last_name }}, was killed in {{ site.data.harvard_park_homicides[0].death_year }} {{ site.data.harvard_park_homicides[0].death_date }}</p>
+<div class="card-columns">
 {% for obj in site.data.harvard_park_homicides %}
-    <li>{{ obj.first_name }} {{ obj.last_name }}</li>
+    <div class="card">
+ {% if obj.image %}<img class="card-img-top" src="{{ obj.image }}" title="Photo of {{obj.first_name}} {{obj.last_name}} " alt="Photo of {{obj.first_name}} {{obj.last_name}} ">{% endif %}
+      <div class="card-body">
+        <h5 class="card-title"><a href="//homicide.latimes.com/post/{{obj.slug}}">{{ obj.first_name }} {{ obj.last_name }}</a></h5>
+        <p class="card-text">{{ obj.last_name }}, a {{ obj.age}}-year-old {{ obj.race }} {{ obj.gender }}, died in {{ obj.death_year }}.</p>
+        <p><a href="//homicide.latimes.com/post/{{obj.slug}}">Link to story</a></p>
+      </div>
+    </div>
 {% endfor %}
+</div>
 {% endblock %}
