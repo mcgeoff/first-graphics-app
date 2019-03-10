@@ -11,6 +11,9 @@
 
 {% block content %}
 
+<div id="map"></div>
+
+
 <div class="charts">
 <section><!-- for semantics-->
   <h3>A South L.A. neighborhood stands apart</h3>
@@ -45,5 +48,8 @@
 <script>
 var annualTotals = {% include  '_data/annual_totals.json' %}
 // most important is that data is included before the chart code
+
+// put it right there in the page
+var homicides = {% include  '_data/harvard_park_homicides.json' %}
 </script>
 {% endblock %}

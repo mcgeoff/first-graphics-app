@@ -26,7 +26,7 @@ var svg = container.append('svg')
 
         var yDomain = [0,d3.max(annualTotals.map(d => d[fieldname]))];
         //var yDomain = [0,d3.max(annualTotals.map(d => d.homicides_total))];
-        
+
 
         var xScale = d3.scaleBand()
                       .domain(xDomain)
@@ -47,7 +47,7 @@ var svg = container.append('svg')
 
           var xAxis = d3.axisBottom(xScale)
           .tickValues([2000, 2005, 2010, 2015, 2017]);
-        
+
           var yAxis = d3.axisLeft(yScale)
                           .tickSize(-chartWidth)
                           .ticks(4);
@@ -81,7 +81,7 @@ var svg = container.append('svg')
           .attr('x', d => xScale(d.year))
           //.attr('y', d => yScale(d.homicides_total))
           .attr('y', d => yScale(d[fieldname]))
-          
+
           .attr('width', xScale.bandwidth())
           // maximum is zero minimum is height of chart
           //.attr('height', d => chartHeight - yScale(d.homicides_total))
@@ -94,7 +94,7 @@ var svg = container.append('svg')
           var x = xScale(d.year) + xScale.bandwidth() / 2;
           // the - 5 bumps up the text a bit so it's not directly over the bar
           var y = yScale(d[fieldname]) - 5;
-  
+
           d3.select(this).classed('highlight', true);
           tooltip.text(d[fieldname])
               .attr('transform', `translate(${x}, ${y})`)
