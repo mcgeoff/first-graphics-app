@@ -17,6 +17,8 @@ $(() => {
  // this is how we refer to leaflet by convention
  var L = require("leaflet");// because installed in our local library we can just use name
 
+var MiniMap = require("leaflet-minimap");
+
  // special hack we have to do to make leaflet icons work in yeogurt
  L.Icon.Default.imagePath = 'https://unpkg.com/leaflet@1.4.0/dist/images/';
 
