@@ -68,6 +68,9 @@ var svg = container.append('svg')
             .call(yAxis);
 
 
+        var tooltip = svg.append('text')
+            .attr('class', 'chart-tooltip');
+
 
         svg.selectAll('.bar')
           .data(annualTotals)
@@ -83,6 +86,24 @@ var svg = container.append('svg')
           // maximum is zero minimum is height of chart
           //.attr('height', d => chartHeight - yScale(d.homicides_total))
           .attr('height', d => chartHeight - yScale(d[fieldname]))
+
+
+
+        .on('mouseenter', function(d) {
+          // centers the text above each bar
+          var x = xScale(d.year) + xScale.bandwidth() / 2;
+          // the - 5 bumps up the text a bit so it's not directly over the bar
+          var y = yScale(d[fieldname]) - 5;
+  
+          d3.select(this).classed('highlight', true);
+          tooltip.text(d[fieldname])
+              .attr('transform', `translate(${x}, ${y})`)
+      })
+
+        .on('mouseleave', function(d) {
+          d3.select(this).classed('highlight', false);
+          tooltip.text('');
+        });
 
 
 }
